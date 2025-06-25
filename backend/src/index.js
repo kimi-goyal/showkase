@@ -13,11 +13,11 @@ app.get("/", (req, res) => {
 
 // TEMPORARILY DISABLE ALL ROUTES
  import authRoutes from "./routes/auth.route.js";
-// import artistRoutes from "./routes/artist.route.js";
+import artistRoutes from "./routes/artist.route.js";
 // import postRoutes from "./routes/post.routes.js";
  app.use("/api/auth", authRoutes);
 // app.use("/api/post", postRoutes);
-// app.use("/api/artists", artistRoutes);
+app.use("/api/artists", artistRoutes);
 
 // TEMPORARILY DISABLE STATIC SERVE
 // if (process.env.NODE_ENV === "production") {
