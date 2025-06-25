@@ -31,6 +31,8 @@ app.get( "/",(req,res)=>{
 res.send("hii")
 })
 
+
+
 if (process.env.NODE_ENV==="production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
