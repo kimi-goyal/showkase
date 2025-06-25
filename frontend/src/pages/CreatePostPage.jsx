@@ -54,7 +54,7 @@ const CreatePostPage = () => {
         mediaType,
       });
 
-      console.log("Post created:", res.data);
+      //console.log("Post created:", res.data);
       navigate('/'); // Redirect after success
     } catch (err) {
       console.error('Error creating post', err.response?.data || err.message);

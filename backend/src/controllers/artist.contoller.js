@@ -90,7 +90,7 @@ export const exploreArtists = async (req, res) => {
      const query = {
       role: "artist",
       isArtistProfileComplete: true,
-      _id: { $ne: req.user._id }, 
+      _id: { $ne: req.user?._id }, 
     };
 
     if (search) {

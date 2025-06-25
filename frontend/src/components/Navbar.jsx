@@ -6,8 +6,7 @@ import { LogOut } from "lucide-react";
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
 
-  // Debugging: Log current user object
-  console.log("🔍 authUser in Navbar:", authUser);
+  
 
   const isArtist =
     authUser &&

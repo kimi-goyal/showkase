@@ -13,13 +13,13 @@ try {
     const user = await User.findOne({email});
 
     if(!user){
-        return res.status(200).json({message:"Invalid Credentials"});
+        return res.status(401).json({message:"Invalid Credentials"});
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if(!isMatch){ 
-        return res.status(200).json({message:"Wrong Email or Wrong Password"})
+        return res.status(401).json({message:"Wrong Email or Wrong Password"})
     };
 
     generateToken(user._id, res);

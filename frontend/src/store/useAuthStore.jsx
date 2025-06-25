@@ -3,7 +3,7 @@ import { axiosInstance } from "../lib/axios.jsx";
 import toast from "react-hot-toast";
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://:5001" : "/";
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:3000" : "/";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -44,20 +44,28 @@ export const useAuthStore = create((set, get) => ({
   },
 
   login: async (data) => {
-    set({ isLoggingIn: true });
-    try {
-      const res = await axiosInstance.post("/auth/login", data);
-      set({ authUser: res.data, userRole: res.data.role });
-      
-      toast.success("Logged in successfully");
+  set({ isLoggingIn: true });
+  try {
+    const res = await axiosInstance.post("/auth/login", data, { withCredentials: true });
 
-      
-    } catch (error) {
-      toast.error(error.response.data.message);
-    } finally {
-      set({ isLoggingIn: false });
+    // check for expected user object
+    if (res?.data?._id) {
+      set({ authUser: res.data, userRole: res.data.role || "user" });
+      toast.success("Logged in successfully");
+    } else {
+      toast.error("Unexpected response format");
+      console.log("Login response structure unexpected:", res);
     }
-  },
+
+  } catch (error) {
+    const message = error?.response?.data?.message || "Login failed";
+    toast.error(message);
+    console.error("Login error:", error);
+  } finally {
+    set({ isLoggingIn: false });
+  }
+},
+
 
   logout: async () => {
     try {

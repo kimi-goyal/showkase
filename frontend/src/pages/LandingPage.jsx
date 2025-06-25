@@ -11,9 +11,7 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section
         className="min-h-screen flex items-center justify-center px-6 md:px-16 py-20 bg-cover bg-center relative"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1504198266285-165a4dd7c040?auto=format&fit=crop&w=1500&q=80')`,
-        }}
+        
       >
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white max-w-3xl">
@@ -71,33 +69,7 @@ const LandingPage = () => {
         <h2 className="text-4xl font-bold text-center text-teal-700 mb-12">
           ✨ Artists of the Week
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {[
-            "https://images.unsplash.com/photo-1611605698335-fd0b91d7d2c2?auto=format&fit=crop&w=500&q=80",
-            "https://images.unsplash.com/photo-1587613869402-fd0848d3c3c6?auto=format&fit=crop&w=500&q=80",
-            "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=500&q=80",
-          ].map((src, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition"
-            >
-              <img
-                src={src}
-                onError={(e) =>
-                  (e.target.src = "https://via.placeholder.com/400x300?text=Artist")
-                }
-                alt="Artist"
-                className="rounded-md mb-4 h-60 w-full object-cover"
-              />
-              <h3 className="text-lg font-bold text-teal-700 mb-1">
-                Artist {i + 1}
-              </h3>
-              <p className="text-sm text-gray-500">
-                Category: Creative | Location: India
-              </p>
-            </div>
-          ))}
-        </div>
+       
       </section>
 
       {/* Testimonials */}
@@ -142,7 +114,7 @@ const LandingPage = () => {
             "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=300&q=80",
             "https://images.unsplash.com/photo-1506790409786-287062b21cfe?auto=format&fit=crop&w=300&q=80",
             "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?auto=format&fit=crop&w=300&q=80",
-            "https://images.unsplash.com/photo-1498654200320-5f26e1fdfd1c?auto=format&fit=crop&w=300&q=80",
+          
             "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=300&q=80",
             "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=300&q=80",
             "https://images.unsplash.com/photo-1500336624523-d727130c3328?auto=format&fit=crop&w=300&q=80",
