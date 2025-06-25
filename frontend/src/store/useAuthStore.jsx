@@ -3,7 +3,7 @@ import { axiosInstance } from "../lib/axios.jsx";
 import toast from "react-hot-toast";
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+const BASE_URL = import.meta.env.MODE === "development" ? "http://:5001" : "/";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -72,7 +72,7 @@ export const useAuthStore = create((set, get) => ({
 
  fetchArtists: async ({ page = 1, limit = 6, search = "", category = "", location = "" }) => {
     try {
-      const response = await axios.get('http://localhost:3000/api/artists/explore', {
+      const response = await axiosInstance.get(`/artists/explore`, {
         params: { page, limit, search, category, location }
       });
       return response.data; 

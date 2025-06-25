@@ -4,6 +4,7 @@ import ArtistGallery from '../components/ArtistGallery';
 import axios from 'axios';
 import { Pencil, Plus, ExternalLink } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
+import { axiosInstance } from '../lib/axios';
 
 
 
@@ -17,7 +18,7 @@ const { authUser } = useAuthStore();
   useEffect(() => {
     const fetchArtistProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/artists/${id}`);
+        const response = await axiosInstance.get(`/artists/${id}`);
         setArtist(response.data);
       } catch (error) {
         console.error("Error fetching artist profile:", error);
@@ -31,6 +32,7 @@ const { authUser } = useAuthStore();
 
   if (loading) return <div className="flex justify-center items-center min-h-screen text-gray-600">Loading...</div>;
   if (!artist) return <div className="flex justify-center items-center min-h-screen text-gray-600">Artist not found</div>;
+
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800 px-4">
